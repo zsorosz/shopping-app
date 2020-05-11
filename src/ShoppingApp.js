@@ -29,6 +29,12 @@ function ShoppingApp(){
         );
         setItems(updatedItems);
     }
+    const editItem = (id, newItem) => {
+        const updatedItems = items.map(item =>
+            item.id === id ? { ...item, itemName: newItem } : item
+        );
+        setItems(updatedItems);
+    }
     return(
         <Paper 
             style={{
@@ -48,8 +54,15 @@ function ShoppingApp(){
             </AppBar>
             <Grid container justify="center" style={{marginTop: "1rem"}}>
                 <Grid item xs={11} md={8} lg={4}>
-                    <ShoppingForm addItem={addItem} />
-                    <ShoppingList items={items} removeItem={removeItem} toggleItem={toggleItem} />
+                    <ShoppingForm 
+                        addItem={addItem} 
+                    />
+                    <ShoppingList 
+                        items={items} 
+                        removeItem={removeItem} 
+                        toggleItem={toggleItem} 
+                        editItem={editItem}
+                    />
                 </Grid>
             </Grid>
         </Paper>
