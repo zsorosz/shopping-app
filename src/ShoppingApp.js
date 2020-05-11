@@ -5,12 +5,13 @@ import ToolBar from '@material-ui/core/ToolBar';
 import AppBar from '@material-ui/core/AppBar';
 import Grid from '@material-ui/core/Grid';
 import Toolbar from '@material-ui/core/ToolBar';
+import ShoppingList from './ShoppingList.js';
 
 function ShoppingApp(){
     const initialItems = [
-        { id: 1, item: "Milk", completed: false },
-        { id: 2, item: "Bread", completed: true },
-        { id: 3, item: "Tomatoes", completed: false }
+        { id: 1, itemName: "Milk", completed: false },
+        { id: 2, itemName: "Bread", completed: true },
+        { id: 3, itemName: "Tomatoes", completed: false }
     ];
     const [items, setItems] = useState(initialItems);
     return(
@@ -30,6 +31,7 @@ function ShoppingApp(){
                     </Typography>
                 </Toolbar>
             </AppBar>
+            <ShoppingList items={items} />
         </Paper>
     )
 }
