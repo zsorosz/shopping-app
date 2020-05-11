@@ -22,6 +22,12 @@ function ShoppingApp(){
     const removeItem = id => {
         const updatedItems = items.filter(item => item.id !== id);
         setItems(updatedItems);
+    };
+    const toggleItem = id => {
+        const updatedItems = items.map(item =>
+            item.id === id ? { ...item, completed: !item.completed } : item
+        );
+        setItems(updatedItems);
     }
     return(
         <Paper 
@@ -43,7 +49,7 @@ function ShoppingApp(){
             <Grid container justify="center" style={{marginTop: "1rem"}}>
                 <Grid item xs={11} md={8} lg={4}>
                     <ShoppingForm addItem={addItem} />
-                    <ShoppingList items={items} removeItem={removeItem} />
+                    <ShoppingList items={items} removeItem={removeItem} toggleItem={toggleItem} />
                 </Grid>
             </Grid>
         </Paper>
