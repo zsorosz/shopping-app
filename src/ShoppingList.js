@@ -2,8 +2,7 @@ import React from 'react';
 import Paper from '@material-ui/core/Paper';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
+import ShoppingItem from './ShoppingItem';
 
 function ShoppingList(props){
     return(
@@ -11,9 +10,7 @@ function ShoppingList(props){
             <List>
                 {props.items.map(item => (
                     <>
-                        <ListItem>
-                            <ListItemText>{item.itemName}</ListItemText>
-                        </ListItem>
+                        <ShoppingItem itemName={item.itemName} key={item.id} completed={item.completed} />
                         <Divider />
                     </>
                 ))}
