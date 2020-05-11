@@ -4,13 +4,19 @@ import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ShoppingItem from './ShoppingItem';
 
-function ShoppingList(props){
+function ShoppingList({items, removeItem}){
     return(
         <Paper>
             <List>
-                {props.items.map(item => (
+                {items.map(item => (
                     <>
-                        <ShoppingItem itemName={item.itemName} key={item.id} completed={item.completed} />
+                        <ShoppingItem 
+                            id={item.id}
+                            itemName={item.itemName} 
+                            key={item.id} 
+                            completed={item.completed} 
+                            removeItem={removeItem}
+                        />
                         <Divider />
                     </>
                 ))}

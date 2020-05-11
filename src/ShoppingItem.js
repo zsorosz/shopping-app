@@ -7,7 +7,7 @@ import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 
-function ShoppingItem({itemName, completed}){
+function ShoppingItem({itemName, completed, removeItem, id}){
     return(
         <ListItem>
             <Checkbox tabIndex={-1} checked={completed} />
@@ -15,7 +15,7 @@ function ShoppingItem({itemName, completed}){
                 {itemName}
             </ListItemText>
             <ListItemSecondaryAction>
-                <IconButton aria-lebel="Delete">
+                <IconButton aria-lebel="Delete" onClick={() => removeItem(id)}>
                     <DeleteIcon />
                 </IconButton>
                 <IconButton aria-lebel="Edit">
