@@ -22,10 +22,10 @@ function ShoppingItem({id, itemName, completed, removeItem, toggleItem, editItem
                     {itemName}
                 </ListItemText>
                 <ListItemSecondaryAction>
-                    <IconButton aria-lebel="Delete" onClick={() => removeItem(id)}>
+                    <IconButton aria-label="Delete" onClick={() => removeItem(id)}>
                         <DeleteIcon />
                     </IconButton>
-                    <IconButton aria-lebel="Edit" onClick={toggle}>
+                    <IconButton aria-label="Edit" onClick={toggle}>
                         <EditIcon />
                     </IconButton>
                 </ListItemSecondaryAction>

@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
-import ToolBar from '@material-ui/core/ToolBar';
 import AppBar from '@material-ui/core/AppBar';
 import Grid from '@material-ui/core/Grid';
 import Toolbar from '@material-ui/core/ToolBar';
@@ -10,12 +9,18 @@ import ShoppingForm from './ShoppingForm.js';
 import uuid from 'uuid/v4';
 
 function ShoppingApp(){
-    const initialItems = [
-        { id: 1, itemName: "Milk", completed: false },
-        { id: 2, itemName: "Bread", completed: true },
-        { id: 3, itemName: "Tomatoes", completed: false }
-    ];
+    const initialItems = JSON.parse(window.localStorage.getItem('items') || "[]");
+    // const initialItems = [
+    //     { id: 1, itemName: "Milk", completed: false },
+    //     { id: 2, itemName: "Bread", completed: true },
+    //     { id: 3, itemName: "Tomatoes", completed: false }
+    // ];
     const [items, setItems] = useState(initialItems);
+
+    useEffect(() => {
+        window.localStorage.setItem("items", JSON.stringify(items));
+    }, [items]);
+
     const addItem = newItemText => {
         setItems([...items, { id: uuid(), itemName: newItemText, completed: false }]);
     };

@@ -5,6 +5,7 @@ import Divider from '@material-ui/core/Divider';
 import ShoppingItem from './ShoppingItem';
 
 function ShoppingList({items, removeItem, toggleItem, editItem}){
+    if(items.length)
     return(
         <Paper>
             <List>
@@ -24,7 +25,8 @@ function ShoppingList({items, removeItem, toggleItem, editItem}){
                 ))}
             </List>
         </Paper>
-    )
+    );
+    return null;
 };
 
 export default ShoppingList;
