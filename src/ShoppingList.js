@@ -12,10 +12,8 @@ function ShoppingList({items, removeItem, toggleItem, editItem}){
                 {items.map((item, i) => (
                     <>
                         <ShoppingItem 
-                            id={item.id}
-                            itemName={item.itemName} 
-                            key={item.id} 
-                            completed={item.completed} 
+                            {...item}
+                            key={item.id}  
                             removeItem={removeItem}
                             toggleItem={toggleItem}
                             editItem={editItem}
