@@ -12,7 +12,7 @@ import EditIcon from '@material-ui/icons/Edit';
 function ShoppingItem({id, itemName, completed, removeItem, toggleItem, editItem}){
     const [isEditing, toggle] = useToggleState(false);
     return(
-        <ListItem>
+        <ListItem style={{height: "64px"}}>
             {isEditing ? 
             <EditItemForm editItem={editItem} id={id} itemName={itemName} toggle={toggle} /> 
             : 

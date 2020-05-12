@@ -8,7 +8,7 @@ function ShoppingList({items, removeItem, toggleItem, editItem}){
     return(
         <Paper>
             <List>
-                {items.map(item => (
+                {items.map((item, i) => (
                     <>
                         <ShoppingItem 
                             id={item.id}
@@ -19,7 +19,7 @@ function ShoppingList({items, removeItem, toggleItem, editItem}){
                             toggleItem={toggleItem}
                             editItem={editItem}
                         />
-                        <Divider />
+                        {i < items.length -1 && <Divider />}
                     </>
                 ))}
             </List>
