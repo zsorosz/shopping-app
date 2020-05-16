@@ -11,7 +11,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import { ItemsContext } from './context/items.context';
 
 function ShoppingItem({id, itemName, completed}){
-    const { removeItem, toggleItem} = useContext(ItemsContext);
+    const { dispatch } = useContext(ItemsContext);
     const [isEditing, toggle] = useToggleState(false);
     return(
         <ListItem style={{height: "64px"}}>
@@ -19,12 +19,12 @@ function ShoppingItem({id, itemName, completed}){
             <EditItemForm id={id} itemName={itemName} toggle={toggle} /> 
             : 
             <>
-                <Checkbox tabIndex={-1} checked={completed} onClick={() => toggleItem(id)} />
+                <Checkbox tabIndex={-1} checked={completed} onClick={() => dispatch({type: "TOGGLE", id: id})} />
                 <ListItemText style={{textDecoration: completed ? "line-through" : "none"}}>
                     {itemName}
                 </ListItemText>
                 <ListItemSecondaryAction>
-                    <IconButton aria-label="Delete" onClick={() => removeItem(id)}>
+                    <IconButton aria-label="Delete" onClick={() => dispatch({type: "REMOVE", id: id})}>
                         <DeleteIcon />
                     </IconButton>
                     <IconButton aria-label="Edit" onClick={toggle}>

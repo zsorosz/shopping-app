@@ -4,12 +4,12 @@ import TextField from '@material-ui/core/TextField';
 import { ItemsContext } from './context/items.context';
 
 function EditItemForm({id, itemName, toggle}){
-    const { editItem } = useContext(ItemsContext);
+    const { dispatch } = useContext(ItemsContext);
     const [value, handleChange, reset] = useInputState(itemName);
     return(
         <form onSubmit={(e) => {
             e.preventDefault();
-            editItem(id, value);
+            dispatch({type: "EDIT", id: id, newItem: value});
             reset();
             toggle();
             }}

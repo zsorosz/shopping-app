@@ -6,13 +6,13 @@ import { ItemsContext } from './context/items.context';
 
 function ShoppingForm(){
     const [value, handleChange, reset] = useInputState("");
-    const { addItem } = useContext(ItemsContext);
+    const { dispatch } = useContext(ItemsContext);
     return(
         <Paper style={{margin: "1rem 0", padding: "0 1rem"}}>
             <form 
                 onSubmit={e => {
                     e.preventDefault();
-                    addItem(value);
+                    dispatch({type: "ADD", itemName: value});
                     reset();
             }}>
                 <TextField 

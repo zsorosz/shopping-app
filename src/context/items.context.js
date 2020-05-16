@@ -1,4 +1,5 @@
-import React, { createContext } from 'react';
+import React, { createContext, useReducer } from 'react';
+import reducer from '../reducers/item.reducer';
 import useItemState from '../hooks/useItemState';
 
 const defaultItems = [
@@ -9,10 +10,10 @@ const defaultItems = [
 export const ItemsContext = createContext();
 
 export function ItemsProvider(props) {
-    const itemsStuff = useItemState(defaultItems);
+    const [items, dispatch] = useReducer(reducer, defaultItems);
     return(
-        <ItemsContext.Provider value={itemsStuff}>
+        <ItemsContext.Provider value={{items, dispatch}}>
             {props.children}
         </ItemsContext.Provider>
-    )
+    );
 }
