@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import useInputState from './hooks/useInputState';
 import TextField from '@material-ui/core/TextField';
+import { ItemsContext } from './context/items.context';
 
-function EditItemForm({id, editItem, itemName, toggle}){
+function EditItemForm({id, itemName, toggle}){
+    const { editItem } = useContext(ItemsContext);
     const [value, handleChange, reset] = useInputState(itemName);
     return(
         <form onSubmit={(e) => {

@@ -10,9 +10,6 @@ import ShoppingForm from './ShoppingForm.js';
 import { ItemsProvider } from './context/items.context';
 
 function ShoppingApp(){
-    const initialItems = [];
-    const { items, addItem, removeItem, toggleItem, editItem } = useItemState(initialItems);
-    
     return(
         <Paper 
             style={{
@@ -33,15 +30,8 @@ function ShoppingApp(){
             <Grid container justify="center" style={{marginTop: "1rem"}}>
                 <Grid item xs={11} md={8} lg={4}>
                     <ItemsProvider>
-                        <ShoppingForm 
-                            addItem={addItem} 
-                        />
-                        <ShoppingList 
-                            items={items} 
-                            removeItem={removeItem} 
-                            toggleItem={toggleItem} 
-                            editItem={editItem}
-                        />
+                        <ShoppingForm />
+                        <ShoppingList />
                     </ItemsProvider>
                 </Grid>
             </Grid>

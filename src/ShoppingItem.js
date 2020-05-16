@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import useToggleState from './hooks/useToggleState';
 import EditItemForm from './EditItemForm';
 import ListItem from '@material-ui/core/ListItem';
@@ -8,13 +8,15 @@ import IconButton from '@material-ui/core/IconButton';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
+import { ItemsContext } from './context/items.context';
 
-function ShoppingItem({id, itemName, completed, removeItem, toggleItem, editItem}){
+function ShoppingItem({id, itemName, completed}){
+    const { removeItem, toggleItem} = useContext(ItemsContext);
     const [isEditing, toggle] = useToggleState(false);
     return(
         <ListItem style={{height: "64px"}}>
             {isEditing ? 
-            <EditItemForm editItem={editItem} id={id} itemName={itemName} toggle={toggle} /> 
+            <EditItemForm id={id} itemName={itemName} toggle={toggle} /> 
             : 
             <>
                 <Checkbox tabIndex={-1} checked={completed} onClick={() => toggleItem(id)} />
