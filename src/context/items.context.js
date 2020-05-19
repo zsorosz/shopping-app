@@ -1,4 +1,5 @@
-import React, { createContext, useReducer } from 'react';
+import React, { createContext } from 'react';
+import useLocalStorageReducer from '../hooks/useLocalStorageReducer';
 import reducer from '../reducers/item.reducer';
 
 const defaultItems = [
@@ -10,7 +11,7 @@ export const ItemsContext = createContext();
 export const DispatchContext = createContext();
 
 export function ItemsProvider(props) {
-    const [items, dispatch] = useReducer(reducer, defaultItems);
+    const [items, dispatch] = useLocalStorageReducer("items", defaultItems, reducer);
     return(
         <ItemsContext.Provider value={items}>
             <DispatchContext.Provider value={dispatch}>
