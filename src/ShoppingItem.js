@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, memo } from 'react';
 import useToggleState from './hooks/useToggleState';
 import EditItemForm from './EditItemForm';
 import ListItem from '@material-ui/core/ListItem';
@@ -37,4 +37,4 @@ function ShoppingItem({id, itemName, completed}){
     )
 }
 
-export default ShoppingItem;
+export default memo(ShoppingItem);
