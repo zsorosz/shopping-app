@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import useItemState from './hooks/useItemState';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import AppBar from '@material-ui/core/AppBar';

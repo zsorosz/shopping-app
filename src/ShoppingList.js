@@ -6,7 +6,7 @@ import ShoppingItem from './ShoppingItem';
 import { ItemsContext } from './context/items.context';
 
 function ShoppingList(){
-    const { items } = useContext(ItemsContext);
+    const items = useContext(ItemsContext);
     if(items.length)
     return(
         <Paper>
